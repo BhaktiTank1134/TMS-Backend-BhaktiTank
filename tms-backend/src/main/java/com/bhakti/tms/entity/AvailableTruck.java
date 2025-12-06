@@ -26,4 +26,7 @@ public class AvailableTruck {
     @ManyToOne
     @JoinColumn(name = "transporter_id")
     private Transporter transporter;
+
+    @Version
+    private Long version;
 }
