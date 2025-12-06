@@ -1,5 +1,6 @@
 package com.bhakti.tms.controller;
 
+import com.bhakti.tms.dto.BidResponseDTO;
 import com.bhakti.tms.dto.LoadRequestDTO;
 import com.bhakti.tms.dto.LoadResponseDTO;
 import com.bhakti.tms.entity.LoadStatus;
@@ -46,5 +47,11 @@ public class LoadController {
     public ResponseEntity<LoadResponseDTO> cancelLoad(@PathVariable UUID loadId) {
         LoadResponseDTO cancelledLoad = loadService.cancelLoad(loadId);
         return ResponseEntity.ok(cancelledLoad);
+    }
+
+    @GetMapping("/{loadId}/best-bids")
+    public ResponseEntity<List<BidResponseDTO>> getBestBids(@PathVariable UUID loadId) {
+        List<BidResponseDTO> bestBids = loadService.getBestBids(loadId);
+        return ResponseEntity.ok(bestBids);
     }
 }
